@@ -1,0 +1,14 @@
+en:
+  simple_form:
+    placeholders:
+      invoice:
+        name: Name of your invoice
+    labels:
+      invoice:
+        name: Name
+
+  helpers:
+    submit:
+      invoice:
+        create: Create invoice
+        update: Update invoice
