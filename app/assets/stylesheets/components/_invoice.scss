@@ -1,23 +1,36 @@
 .invoice {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-s);
-
   background-color: var(--color-white);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-small);
   margin-bottom: var(--space-m);
-  padding: var(--space-xs);
+  padding: var(--space-xl);
 
   @include media(tabletAndUp) {
-    padding: var(--space-xs) var(--space-m);
+    padding: var(--space-l) var(--space-xl);
   }
 
-  &__actions {
+  &__header {
     display: flex;
-    flex: 0 0 auto;
-    align-self: flex-start;
-    gap: var(--space-xs);
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-s);
+
+    &__highlight {
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--space-m);
+    }
+
+    &__upcase {
+      text-transform: uppercase;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__body {
+
   }
 }

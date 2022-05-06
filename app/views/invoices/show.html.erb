@@ -1,8 +1,42 @@
 <main class="container">
   <%= link_to sanitize("&larr; Back to invoices"), invoices_path %>
-  <div class="header">
-    <h1>
-      <%= @invoice.name %>
-    </h1>
+
+  <div class="invoice">
+    <div class="invoice__header">
+      <div>
+        <p class="invoice__header__highlight"><%= @invoice.user.full_name %></p>
+        <p class="invoice__header__upcase"><%= @invoice.user.address1 %></p>
+        <p class="invoice__header__upcase"><%= @invoice.user.zipcode %> <%= @invoice.user.city %></p>
+        <p><%= @invoice.user.country %></p>
+        <p><%= @invoice.user.email %></p>
+        <p><%= @invoice.user.website %></p>
+        <p class="invoice__header__upcase">SIREN: <%= @invoice.user.siren %></p>
+      </div>
+      <div class="invoice__header--right">
+        <p class="invoice__header__highlight"><%= @invoice.client.name %></p>
+        <p class="invoice__header__upcase"><%= @invoice.client.address1 %></p>
+        <p class="invoice__header__upcase"><%= @invoice.client.zipcode %> <%= @invoice.client.city %></p>
+        <p><%= @invoice.client.country %></p>
+      </div>
+    </div>
+
+    <hr>
+
+
+    <hr>
+
+    <div>
+      <p>N° de Facture : <%= @invoice.number %></p>
+      <p>Date d'émission : <%= @invoice.date.strftime("%d/%m/%Y") %></p>
+      <p><%= @invoice.title %></p>
+    </div>
+
+    <hr>
+
+    <div>
+      <p>Informations de paiement</p>
+      <p>BIC : <%= @invoice.user.bic %></p>
+      <p>IBAN : <%= @invoice.user.iban %></p>
+    </div>
   </div>
 </main>

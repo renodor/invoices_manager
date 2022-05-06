@@ -10,15 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_06_103733) do
+ActiveRecord::Schema.define(version: 2022_05_06_145418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address1"
+    t.string "address2"
+    t.string "zipcode"
+    t.string "city"
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "invoices", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "client_id"
+    t.string "number", null: false
+    t.datetime "date", precision: 6, null: false
+    t.string "title"
+    t.bigint "user_id"
+    t.index ["client_id"], name: "index_invoices_on_client_id"
+    t.index ["user_id"], name: "index_invoices_on_user_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "address1"
+    t.string "zipcode"
+    t.string "city"
+    t.string "country"
+    t.string "website"
+    t.string "siren"
+    t.string "bic"
+    t.string "iban"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "genre"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "invoices", "clients"
+  add_foreign_key "invoices", "users"
 end
