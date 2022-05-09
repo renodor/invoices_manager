@@ -4,39 +4,52 @@
   <div class="invoice">
     <div class="invoice__header">
       <div>
-        <p class="invoice__header__highlight"><%= @invoice.user.full_name %></p>
-        <p class="invoice__header__upcase"><%= @invoice.user.address1 %></p>
-        <p class="invoice__header__upcase"><%= @invoice.user.zipcode %> <%= @invoice.user.city %></p>
+        <p class="invoice__title"><%= @invoice.user.full_name %></p>
+        <p class="invoice__upcase"><%= @invoice.user.address1 %></p>
+        <p class="invoice__upcase"><%= @invoice.user.zipcode %> <%= @invoice.user.city %></p>
         <p><%= @invoice.user.country %></p>
-        <p><%= @invoice.user.email %></p>
-        <p><%= @invoice.user.website %></p>
-        <p class="invoice__header__upcase">SIREN: <%= @invoice.user.siren %></p>
+        <div class="invoice__spaced">
+          <p><%= @invoice.user.email %></p>
+          <p><%= @invoice.user.website %></p>
+        </div>
+        <p class="invoice__title">SIREN: <%= @invoice.user.siren %></p>
       </div>
       <div class="invoice__header--right">
-        <p class="invoice__header__highlight"><%= @invoice.client.name %></p>
-        <p class="invoice__header__upcase"><%= @invoice.client.address1 %></p>
-        <p class="invoice__header__upcase"><%= @invoice.client.zipcode %> <%= @invoice.client.city %></p>
+        <p class="invoice__title"><%= @invoice.client.name %></p>
+        <p class="invoice__upcase"><%= @invoice.client.address1 %></p>
+        <p class="invoice__upcase"><%= @invoice.client.zipcode %> <%= @invoice.client.city %></p>
         <p><%= @invoice.client.country %></p>
       </div>
     </div>
 
-    <hr>
-
-
-    <hr>
-
     <div>
       <p>N° de Facture : <%= @invoice.number %></p>
       <p>Date d'émission : <%= @invoice.date.strftime("%d/%m/%Y") %></p>
-      <p><%= @invoice.title %></p>
     </div>
 
-    <hr>
+    <div class="invoice__body">
+      <div class="invoice__bold"><%= @invoice.title %></div>
+      <div class="invoice__line-items">
+        <div class="line-item line-item--header">
+          <span class="line-item__element">Description</span>
+          <span class="line-item__element">Qté</span>
+          <span class="line-item__element">Prix unitaire</span>
+          <span class="line-item__element">Total HT</span>
+        </div>
+        <%= render @invoice.line_items %>
+        <div class="line-item line-item--total">
+          <span>Total</span>
+          <span><%= number_to_currency(@invoice.total_price) %></span>
+        </div>
+      </div>
+      <p class="invoice__no-tva">TVA non applicable, article 293 B du Code Général des Impôts</p>
+    </div>
 
-    <div>
-      <p>Informations de paiement</p>
-      <p>BIC : <%= @invoice.user.bic %></p>
-      <p>IBAN : <%= @invoice.user.iban %></p>
+    <div class="invoice__payment">
+      <div class="invoice__payment__line invoice__bold">Informations de paiement</div>
+      <div class="invoice__payment__line"><span>BIC :</span><%= @invoice.user.bic %></div>
+      <div class="invoice__payment__line"><span>IBAN :</span><%= @invoice.user.iban %></div>
+      <div class="invoice__payment__line"><span>Libellé :</span><span class="invoice__bold"><%= @invoice.number %></span></div>
     </div>
   </div>
 </main>

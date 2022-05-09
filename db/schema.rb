@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_06_145418) do
+ActiveRecord::Schema.define(version: 2022_05_09_142441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2022_05_06_145418) do
     t.index ["user_id"], name: "index_invoices_on_user_id"
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.bigint "invoice_id", null: false
+    t.text "description", null: false
+    t.integer "quantity", null: false
+    t.decimal "unit_price", precision: 10, scale: 2, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["invoice_id"], name: "index_line_items_on_invoice_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -64,4 +74,5 @@ ActiveRecord::Schema.define(version: 2022_05_06_145418) do
 
   add_foreign_key "invoices", "clients"
   add_foreign_key "invoices", "users"
+  add_foreign_key "line_items", "invoices"
 end

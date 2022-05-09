@@ -43,8 +43,8 @@ class InvoicesController < ApplicationController
     @invoice.destroy
 
     respond_to do |format|
-      format.html { redirect_to invoices_path, notice: "Invoice was successfully destroyed." }
-      format.turbo_stream { flash.now[:notice] = "Invoice was successfully destroyed." }
+      format.html { redirect_to invoices_path, notice: 'Invoice was successfully destroyed.' }
+      format.turbo_stream { flash.now[:notice] = 'Invoice was successfully destroyed.' }
     end
   end
 

@@ -2,6 +2,7 @@
 
 User.destroy_all
 Invoice.destroy_all
+LineItem.destroy_all
 
 user = User.create!(
   email: 'renaud.dor@gmail.com',
@@ -27,7 +28,7 @@ client = Client.create!(
 )
 
 5.times do |n|
-  Invoice.create!(
+  invoice = Invoice.create!(
     name: "Cool Invoice #{n + 1}",
     number: "#{Time.current.year}#{n + 1}",
     date: DateTime.current,
@@ -35,4 +36,13 @@ client = Client.create!(
     user: user,
     client: client
   )
+
+  2.times do |i|
+    LineItem.create!(
+      description: "Cool Line Item #{i + 1}",
+      quantity: i + 1,
+      unit_price: rand(0..100.00),
+      invoice: invoice
+    )
+  end
 end
