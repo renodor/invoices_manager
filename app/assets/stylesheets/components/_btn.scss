@@ -69,4 +69,13 @@
       color: var(--color-white);
     }
   }
+
+  &--icon {
+    display: block;
+    padding: 0;
+    svg {
+      height: calc(var(--line-height-body) * .8em);
+      width: calc(var(--line-height-body) * .8em);
+    }
+  }
 }

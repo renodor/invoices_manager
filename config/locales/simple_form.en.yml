@@ -3,10 +3,14 @@ en:
     placeholders:
       invoice:
         name: Name of your invoice
+      line_item:
+        name: Name of your item
+        description: Description (optional)
+        quantity: 1
+        unit_price: $100.00
     labels:
       invoice:
         name: Name
-
   helpers:
     submit:
       invoice:

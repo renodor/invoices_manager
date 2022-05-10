@@ -5,16 +5,16 @@ Invoice.destroy_all
 LineItem.destroy_all
 
 user = User.create!(
-  email: 'renaud.dor@gmail.com',
+  email: 'batman@gmail.com',
   password: 'Azerty123',
-  first_name: 'Renaud',
-  last_name: 'Dor',
+  first_name: 'Bruce',
+  last_name: 'Wayne',
   address1: '10 Rue de par ici',
   zipcode: '00000',
   city: 'Cool City',
   country: 'France',
-  website: 'www.renodor.co',
-  siren: '803 043 918',
+  website: 'www.website.co',
+  siren: '000 000 000',
   bic: 'AAAAAAAA',
   iban: 'FR76 0000 0000 0000 0000 0000 000'
 )

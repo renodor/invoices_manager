@@ -31,12 +31,13 @@
       <div class="invoice__bold"><%= @invoice.title %></div>
       <div class="invoice__line-items">
         <div class="line-item line-item--header">
-          <span class="line-item__element">Description</span>
-          <span class="line-item__element">Qté</span>
-          <span class="line-item__element">Prix unitaire</span>
-          <span class="line-item__element">Total HT</span>
+          <span class="line-item__description">Description</span>
+          <span class="line-item__quantity">Qté</span>
+          <span class="line-item__price">Prix unitaire</span>
+          <span class="line-item__total">Total HT</span>
         </div>
-        <%= render @invoice.line_items %>
+        <%= render @invoice.line_items, invoice: @invoice %>
+        <%= link_to 'Ajouter', new_invoice_line_item_path(@invoice) %>
         <div class="line-item line-item--total">
           <span>Total</span>
           <span><%= number_to_currency(@invoice.total_price) %></span>
