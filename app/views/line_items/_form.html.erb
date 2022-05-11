@@ -13,15 +13,15 @@
                 wrapper_html: { class: "line-item__price" } %>
   <% end %>
   <div class="line-item__actions">
-    <%= button_tag class: 'btn btn--secondary btn--icon', form: dom_id(line_item, %w[edit update].include?(params[:action])  ? :edit : nil) do %>
-      <%= svg('check') %>
-    <% end %>
-    <%= link_to svg('return'), invoice_path(invoice), class: 'btn btn--light btn--icon' %>
     <% unless %w[new create].include?(params[:action]) %>
       <%= button_to svg('trash'),
                     [invoice, line_item],
                     method: :delete,
                     class: 'btn btn--light btn--icon' %>
+    <% end %>
+    <%= link_to svg('return'), invoice_path(invoice), class: 'btn btn--light btn--icon' %>
+    <%= button_tag class: 'btn btn--secondary btn--icon', form: dom_id(line_item, %w[edit update].include?(params[:action])  ? :edit : nil) do %>
+      <%= svg('check') %>
     <% end %>
   </div>
 </div>

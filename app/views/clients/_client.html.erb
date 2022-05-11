@@ -1,0 +1,12 @@
+<%= turbo_frame_tag @client do %>
+  <div class="client">
+    <p class="invoice__title"><%= @client.name %></p>
+    <p class="invoice__upcase"><%= @client.address1 %></p>
+    <p class="invoice__upcase"><%= @client.zipcode %> <%= @client.city %></p>
+    <p><%= @client.country %></p>
+    <%= link_to '',
+        [:edit, @client],
+        class: "line-item__edit"
+        %>
+  </div>
+<% end %>

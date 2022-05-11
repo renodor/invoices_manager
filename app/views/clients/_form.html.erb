@@ -1,0 +1,24 @@
+<%= simple_form_for client, html: { class: 'form client client--form' } do |f| %>
+  <%= f.input :name,
+              wrapper_html: { class: 'client__name' },
+              input_html: { autofocus: true } %>
+  <%= f.input :address1,
+              wrapper_html: { class: 'client__address1' } %>
+  <%= f.input :address2,
+              wrapper_html: { class: 'client__address2' } %>
+  <div class="row">
+    <%= f.input :zipcode,
+                wrapper_html: { class: 'coucou client__zipcode' } %>
+    <%= f.input :city,
+                wrapper_html: { class: 'coucou client__city' } %>
+  </div>
+  <%= f.input :country,
+              as: :string,
+              wrapper_html: { class: 'client__country' } %>
+  <div class="client__actions">
+    <%= link_to svg('return'), :back, class: 'btn btn--light btn--icon' %>
+    <%= button_tag class: 'btn btn--secondary btn--icon', form: dom_id(client, %w[edit update].include?(params[:action])  ? :edit : nil) do %>
+      <%= svg('check') %>
+    <% end %>
+  </div>
+<% end %>

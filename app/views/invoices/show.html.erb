@@ -15,13 +15,7 @@
         <p class="invoice__title">SIREN: <%= @invoice.user.siren %></p>
       </div>
       <div class="invoice__header--right">
-        <p class="invoice__title"><%= @client.name %></p>
-        <p class="invoice__upcase"><%= @client.address1 %></p>
-        <p class="invoice__upcase"><%= @client.zipcode %> <%= @client.city %></p>
-        <p><%= @client.country %></p>
-        <%= link_to '',
-            [:edit, @invoice, @client],
-            class: "line-item__edit" %>
+        <%= render @client %>
       </div>
     </div>
 

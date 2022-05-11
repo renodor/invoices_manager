@@ -1,0 +1,26 @@
+.client {
+  position: relative;
+  padding: var(--space-s) var(--space-m);
+  transition: box-shadow 300ms;
+  &:hover {
+    box-shadow: var(--shadow-small);
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: var(--space-s);
+  }
+
+  &--form {
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+    max-width: 50%;
+    input {
+      text-align: right;
+    }
+  }
+}

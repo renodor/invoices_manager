@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xs);
+  gap: var(--space-xxs);
 
   &__group {
     flex: 1;
@@ -11,7 +11,7 @@
     display: block;
     width: 100%;
     max-width: 100%;
-    padding: var(--space-xxs) var(--space-xs);
+    padding: var(--space-xxxs);
     border: var(--border);
     border-radius: var(--border-radius);
     outline: none;

@@ -7,6 +7,9 @@
   position: relative;
   border: 1px dashed transparent;
   transition: box-shadow 300ms;
+  &:hover {
+    box-shadow: var(--shadow-small);
+  }
 
   &__description {
     flex-grow: 1;
@@ -45,10 +48,6 @@
     align-items: center;
     justify-content: flex-end;
     column-gap: var(--space-s);
-  }
-
-  &:hover {
-    box-shadow: var(--shadow-small);
   }
 
   &--header {

@@ -6,7 +6,7 @@
   </div>
 
   <%= turbo_frame_tag @line_item do %>
-    <%= render "form",
+    <%= render 'form',
               invoice: @invoice,
               line_item: @line_item %>
   <% end %>
