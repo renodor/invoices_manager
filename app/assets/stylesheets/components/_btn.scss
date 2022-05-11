@@ -72,10 +72,14 @@
 
   &--icon {
     display: block;
-    padding: 0;
+    padding: var(--space-xxs);
     svg {
       height: calc(var(--line-height-body) * .8em);
       width: calc(var(--line-height-body) * .8em);
     }
+  }
+
+  &--spaced {
+    margin: var(--space-xs)
   }
 }

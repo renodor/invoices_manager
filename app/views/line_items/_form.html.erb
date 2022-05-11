@@ -1,20 +1,27 @@
-<%= simple_form_for [invoice, line_item],
-                    html: { class: "form line-item line-item--form" } do |f| %>
+<div class="line-item line-item--form">
+  <%= simple_form_for [invoice, line_item],
+                      html: { class: "form" } do |f| %>
 
-  <%#= form_error_notification(line_item) %>
+    <%#= form_error_notification(line_item) %>
 
-  <%= f.input :description,
-              wrapper_html: { class: "line-item__description" },
-              input_html: { autofocus: true } %>
-  <%= f.input :quantity,
-              wrapper_html: { class: "line-item__quantity" } %>
-  <%= f.input :unit_price,
-              wrapper_html: { class: "line-item__price" } %>
-
+    <%= f.input :description,
+                wrapper_html: { class: "line-item__description" },
+                input_html: { autofocus: true } %>
+    <%= f.input :quantity,
+                wrapper_html: { class: "line-item__quantity" } %>
+    <%= f.input :unit_price,
+                wrapper_html: { class: "line-item__price" } %>
+  <% end %>
   <div class="line-item__actions">
-    <%= link_to svg('return'), invoice_path(invoice), class: "btn btn--light btn--icon" %>
-    <button type="submit" class="btn btn--secondary btn--icon">
+    <%= button_tag class: 'btn btn--secondary btn--icon', form: dom_id(line_item, %w[edit update].include?(params[:action])  ? :edit : nil) do %>
       <%= svg('check') %>
-    </button>
+    <% end %>
+    <%= link_to svg('return'), invoice_path(invoice), class: 'btn btn--light btn--icon' %>
+    <% unless %w[new create].include?(params[:action]) %>
+      <%= button_to svg('trash'),
+                    [invoice, line_item],
+                    method: :delete,
+                    class: 'btn btn--light btn--icon' %>
+    <% end %>
   </div>
-<% end %>
+</div>

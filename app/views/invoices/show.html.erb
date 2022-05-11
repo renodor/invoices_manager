@@ -15,10 +15,13 @@
         <p class="invoice__title">SIREN: <%= @invoice.user.siren %></p>
       </div>
       <div class="invoice__header--right">
-        <p class="invoice__title"><%= @invoice.client.name %></p>
-        <p class="invoice__upcase"><%= @invoice.client.address1 %></p>
-        <p class="invoice__upcase"><%= @invoice.client.zipcode %> <%= @invoice.client.city %></p>
-        <p><%= @invoice.client.country %></p>
+        <p class="invoice__title"><%= @client.name %></p>
+        <p class="invoice__upcase"><%= @client.address1 %></p>
+        <p class="invoice__upcase"><%= @client.zipcode %> <%= @client.city %></p>
+        <p><%= @client.country %></p>
+        <%= link_to '',
+            [:edit, @invoice, @client],
+            class: "line-item__edit" %>
       </div>
     </div>
 
@@ -36,12 +39,18 @@
           <span class="line-item__price">Prix unitaire</span>
           <span class="line-item__total">Total HT</span>
         </div>
-        <%= render @invoice.line_items, invoice: @invoice %>
-        <%= link_to 'Ajouter', new_invoice_line_item_path(@invoice) %>
-        <div class="line-item line-item--total">
-          <span>Total</span>
-          <span><%= number_to_currency(@invoice.total_price) %></span>
-        </div>
+        <%= turbo_frame_tag nested_dom_id(@invoice, 'line_items') do %>
+          <%= render @invoice.line_items.ordered, invoice: @invoice %>
+        <% end %>
+        <%= turbo_frame_tag nested_dom_id(@invoice, LineItem.new) %>
+        <%= button_to svg('plus'),
+                    [:new, @invoice, :line_item],
+                    method: :get,
+                    data: { turbo_frame: nested_dom_id(@invoice, LineItem.new) },
+                    class: 'btn btn--light btn--icon btn--spaced' %>
+        <%= turbo_frame_tag dom_id(@invoice, :total) do %>
+          <%= render 'total', invoice: @invoice %>
+        <% end %>
       </div>
       <p class="invoice__no-tva">TVA non applicable, article 293 B du Code Général des Impôts</p>
     </div>

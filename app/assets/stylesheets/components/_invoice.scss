@@ -51,6 +51,19 @@
     font-style: italic;
   }
 
+  &__total {
+    display: flex;
+    justify-content: flex-end;
+    &__content {
+      width: 30%;
+      display: flex;
+      justify-content: space-between;
+      background-color: var(--color-light);
+      padding: var(--space-s) var(--space-m);
+      font-weight: 800;
+    }
+  }
+
   &__payment {
     display: flex;
     flex-direction: column;

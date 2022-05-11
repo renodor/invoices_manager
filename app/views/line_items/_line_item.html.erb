@@ -4,14 +4,8 @@
     <span class="line-item__quantity"><%= line_item.quantity %></span>
     <span class="line-item__price"><%= number_to_currency(line_item.unit_price) %></span>
     <span class="line-item__total"><%= number_to_currency(line_item.total_price) %></span>
-    <div class="line-item__actions">
-      <%= link_to svg('edit'),
-                  [:edit, invoice, line_item],
-                  class: "btn btn--light btn--icon" %>
-      <%= button_to svg('trash'),
-                    [invoice, line_item],
-                    method: :delete,
-                    class: "btn btn--light btn--icon" %>
-    </div>
+    <%= link_to '',
+                [:edit, invoice, line_item],
+                class: "line-item__edit" %>
   </div>
 <% end %>

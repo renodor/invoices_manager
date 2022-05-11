@@ -7,7 +7,9 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.ordered
   end
 
-  def show; end
+  def show
+    @client = @invoice.client
+  end
 
   def new
     @invoice = Invoice.new

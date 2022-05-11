@@ -5,9 +5,9 @@
     <h1>New item for invoice #<%= @invoice.number %></h1>
   </div>
 
-  <%#= turbo_frame_tag nested_dom_id(@line_item_date, LineItem.new) do %>
+  <%= turbo_frame_tag nested_dom_id(@invoice, LineItem.new) do %>
     <%= render "form",
               invoice: @invoice,
               line_item: @line_item %>
-  <%# end %>
+  <% end %>
 </main>
