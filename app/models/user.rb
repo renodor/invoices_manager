@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :validatable
 
   has_many :invoices, dependent: :nullify
+  has_many :clients, dependent: :nullify
 
   def full_name
     "#{first_name} #{last_name}"

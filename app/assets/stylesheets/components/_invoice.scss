@@ -11,12 +11,13 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: var(--space-xxl);
+  }
 
-    &--right {
-      text-align: right;
-      flex-grow: 0;
-      max-width: 50%;
-    }
+  &__client {
+    position: relative;
+    text-align: right;
+    flex-grow: 0;
+    max-width: 50%;
   }
 
   &__title {

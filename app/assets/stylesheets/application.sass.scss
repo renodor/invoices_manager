@@ -5,6 +5,7 @@
 @import 'config/variables';
 @import 'config/reset';
 @import 'config/animations';
+@import 'config/utilities';
 
 // Components
 @import 'components/btn';
@@ -12,9 +13,9 @@
 @import 'components/form';
 @import 'components/visually_hidden';
 @import 'components/invoice_card';
+@import 'components/invoice_client';
 @import 'components/invoice';
 @import 'components/line_item';
-@import 'components/client';
 @import 'components/turbo_progress_bar';
 @import 'components/navbar';
 @import 'components/flash';

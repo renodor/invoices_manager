@@ -14,8 +14,10 @@
         </div>
         <p class="invoice__title">SIREN: <%= @invoice.user.siren %></p>
       </div>
-      <div class="invoice__header--right">
-        <%= render @client %>
+      <div class="invoice__client">
+        <%= turbo_frame_tag dom_id(@invoice, :client) do %>
+          <%= render 'invoices/client', invoice: @invoice, client: @client %>
+        <% end %>
       </div>
     </div>
 

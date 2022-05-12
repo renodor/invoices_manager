@@ -1,4 +1,4 @@
-.client {
+.invoice-client {
   position: relative;
   padding: var(--space-s) var(--space-m);
   transition: box-shadow 300ms;
@@ -13,14 +13,15 @@
     column-gap: var(--space-s);
   }
 
+  &--focus {
+    box-shadow: var(--shadow-small);
+  }
+
   &--form {
-    flex-direction: column;
-    position: absolute;
-    right: 0;
-    top: 0;
-    max-width: 50%;
-    input {
-      text-align: right;
+    align-items: center;
+    margin-bottom: var(--space-s);
+    select {
+      padding: var(--space-xxs);
     }
   }
 }

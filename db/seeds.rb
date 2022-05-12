@@ -19,13 +19,16 @@ user = User.create!(
   iban: 'FR76 0000 0000 0000 0000 0000 000'
 )
 
-client = Client.create!(
-  name: 'Cool Client',
-  address1: '10 Rue de là bas',
-  zipcode: '00000',
-  city: 'Cool City',
-  country: 'France'
-)
+5.times do |n|
+  Client.create!(
+    name: "Cool Client #{n + 1}",
+    address1: "#{n + 1} Rue de là bas",
+    zipcode: '00000',
+    city: 'Cool City',
+    country: 'France',
+    user: user
+  )
+end
 
 5.times do |n|
   invoice = Invoice.create!(
@@ -34,7 +37,7 @@ client = Client.create!(
     date: DateTime.current,
     title: 'Services de développement web',
     user: user,
-    client: client
+    client: Client.first
   )
 
   2.times do |i|

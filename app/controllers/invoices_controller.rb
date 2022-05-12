@@ -1,10 +1,10 @@
 # frozen_string_literal:true
 
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: %i[show edit update destroy]
+  before_action :set_invoice, only: %i[show edit edit_client update update_client destroy]
 
   def index
-    @invoices = Invoice.ordered
+    @invoices = current_user.invoices.ordered
   end
 
   def show
@@ -12,11 +12,11 @@ class InvoicesController < ApplicationController
   end
 
   def new
-    @invoice = Invoice.new
+    @invoice = current_user.invoice.build
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
+    @invoice = current_user.invoice.build(invoice_params)
 
     if @invoice.save
       respond_to do |format|
@@ -29,6 +29,23 @@ class InvoicesController < ApplicationController
   end
 
   def edit; end
+
+  def edit_client
+    @clients = current_user.clients
+    @client = @invoice.client
+  end
+
+  def update_client
+    if @invoice.update(invoice_params)
+      @client = @invoice.client
+      respond_to do |format|
+        format.html { redirect_to invoices_path, notice: 'Invoice client was successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = 'Invoice client was successfully updated.' }
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   def update
     if @invoice.update(invoice_params)
@@ -53,10 +70,10 @@ class InvoicesController < ApplicationController
   private
 
   def set_invoice
-    @invoice = Invoice.find(params[:id])
+    @invoice = current_user.invoices.find(params[:id])
   end
 
   def invoice_params
-    params.require(:invoice).permit(:name)
+    params.require(:invoice).permit(:name, :client_id)
   end
 end
