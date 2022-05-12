@@ -1,7 +1,7 @@
 # frozen_string_literal:true
 
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: %i[show edit edit_client update update_client destroy]
+  before_action :set_invoice, only: %i[show edit edit_client edit_infos update update_client update_infos destroy]
 
   def index
     @invoices = current_user.invoices.ordered
@@ -47,6 +47,19 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def edit_infos; end
+
+  def update_infos
+    if @invoice.update(invoice_params)
+      respond_to do |format|
+        format.html { redirect_to invoices_path, notice: 'Invoice infos were successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = 'Invoice infos were successfully updated.' }
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def update
     if @invoice.update(invoice_params)
       respond_to do |format|
@@ -74,6 +87,6 @@ class InvoicesController < ApplicationController
   end
 
   def invoice_params
-    params.require(:invoice).permit(:name, :client_id)
+    params.require(:invoice).permit(:name, :date, :title, :number, :client_id)
   end
 end

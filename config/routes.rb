@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     member do
       get :edit_client
       patch :update_client
+      get :edit_infos
+      patch :update_infos
     end
   end
 end

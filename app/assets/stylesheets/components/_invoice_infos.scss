@@ -1,0 +1,24 @@
+.invoice-infos {
+  position: relative;
+  padding: var(--space-s) var(--space-m);
+  transition: box-shadow 300ms;
+  &:hover {
+    box-shadow: var(--shadow-small);
+  }
+
+  &__name {
+    margin-top: var(--space-xxxxl);
+    font-weight: 800;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: var(--space-s);
+  }
+
+  &--form {
+    flex-direction: column;
+  }
+}

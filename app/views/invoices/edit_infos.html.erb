@@ -1,0 +1,13 @@
+<%= turbo_frame_tag dom_id(@invoice, :infos) do %>
+  <%= simple_form_for @invoice, url: update_infos_invoice_path(@invoice), html: { class: 'form invoice-infos--form' } do |f| %>
+    <div class="invoice-infos__actions">
+      <%= link_to svg('return'), invoice_path(@invoice), class: 'btn btn--light btn--icon' %>
+      <%= button_tag class: 'btn btn--secondary btn--icon' do %>
+        <%= svg('check') %>
+      <% end %>
+    </div>
+    <%= f.input :number, input_html: { autofocus: true } %>
+    <%= f.input :date, html5: true %>
+    <%= f.input :title %>
+  <% end %>
+<% end %>

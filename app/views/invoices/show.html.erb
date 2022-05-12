@@ -21,13 +21,13 @@
       </div>
     </div>
 
-    <div>
-      <p>N° de Facture : <%= @invoice.number %></p>
-      <p>Date d'émission : <%= @invoice.date.strftime("%d/%m/%Y") %></p>
+    <div class="invoice__infos">
+      <%= turbo_frame_tag dom_id(@invoice, :infos) do %>
+        <%= render 'invoices/infos', invoice: @invoice %>
+      <% end %>
     </div>
 
     <div class="invoice__body">
-      <div class="invoice__bold"><%= @invoice.title %></div>
       <div class="invoice__line-items">
         <div class="line-item line-item--header">
           <span class="line-item__description">Description</span>
@@ -52,10 +52,10 @@
     </div>
 
     <div class="invoice__payment">
-      <div class="invoice__payment__line invoice__bold">Informations de paiement</div>
+      <div class="invoice__payment__line bold">Informations de paiement</div>
       <div class="invoice__payment__line"><span>BIC :</span><%= @invoice.user.bic %></div>
       <div class="invoice__payment__line"><span>IBAN :</span><%= @invoice.user.iban %></div>
-      <div class="invoice__payment__line"><span>Libellé :</span><span class="invoice__bold"><%= @invoice.number %></span></div>
+      <div class="invoice__payment__line"><span>Libellé :</span><span class="bold"><%= @invoice.number %></span></div>
     </div>
   </div>
 </main>

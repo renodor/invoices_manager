@@ -14,7 +14,6 @@
   }
 
   &__client {
-    position: relative;
     text-align: right;
     flex-grow: 0;
     max-width: 50%;
@@ -26,10 +25,6 @@
     margin-bottom: var(--space-s);
   }
 
-  &__bold {
-    font-weight: 800;
-  }
-
   &__upcase {
     text-transform: uppercase;
   }
@@ -39,11 +34,11 @@
   }
 
   &__body {
-    margin: var(--space-xxxxl) 0;
+    margin-top: var(--space-m);
+    margin-bottom: var(--space-xxxxl);
   }
 
   &__line-items {
-    margin-top: var(--space-l);
     margin-bottom: var(--space-m);
     display: flex;
     flex-direction: column;
