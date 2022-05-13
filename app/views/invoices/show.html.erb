@@ -41,4 +41,18 @@
 
     <%= render 'payment', invoice: @invoice %>
   </div>
+
+  <% if @invoice.days.present? %>
+    <div class="days">
+      <div class="day day--header">
+        <span class="day__date">Date</span>
+        <span class="day__week-day">Day of Week</span>
+        <span class="day__worked-hours">Working Hours</span>
+        <span class="day__comment">Comment</span>
+      </div>
+      <%= render @invoice.days.ordered, invoice: @invoice %>
+    </div>
+  <% else %>
+    <%= link_to 'Generate Days', generate_month_invoice_days_path(@invoice) %>
+  <% end %>
 </main>

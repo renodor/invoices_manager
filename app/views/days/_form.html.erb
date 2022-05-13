@@ -1,0 +1,14 @@
+<%= simple_form_for [invoice, day], html: { class: 'form day day--form' } do |f| %>
+  <span class="day__date"><%= day.date %></span>
+  <div class="day__week-day">
+    <label for="day_worked">Worked day?</label>
+    <%= f.input :worked %>
+  </div>
+  <%= f.input :comment %>
+  <div class="day__actions">
+    <%= link_to svg('return'), :back, class: 'btn btn--light btn--icon' %>
+    <%= button_tag class: 'btn btn--primary btn--icon' do %>
+      <%= svg('check') %>
+    <% end %>
+  </div>
+<% end %>

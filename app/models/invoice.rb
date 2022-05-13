@@ -4,6 +4,7 @@ class Invoice < ApplicationRecord
   belongs_to :user
   belongs_to :client
   has_many :line_items, dependent: :destroy
+  has_many :days, dependent: :destroy
 
   validates :date, :number, presence: true
   validates :number, uniqueness: true

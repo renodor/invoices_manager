@@ -17,6 +17,4 @@ SimpleForm.setup do |config|
   config.error_notification_tag          = :div
   config.error_notification_class        = 'error_notification'
   config.browser_validations             = false
-  config.boolean_style                   = :nested
-  config.boolean_label_class             = 'form__checkbox-label'
 end

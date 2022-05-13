@@ -7,6 +7,11 @@ fr:
         description: Description
         quantity: 1
         unit_price: 100,00 €
+      day:
+        comment: Commentaire
+    label:
+      day:
+        worked: Jour travaillé?
   helpers:
     submit:
       invoice:

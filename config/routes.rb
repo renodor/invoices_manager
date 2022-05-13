@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   resources :clients, only: %i[edit update index]
   resources :invoices do
     resources :line_items
+    resources :days do
+      collection do
+        get :generate_month
+      end
+    end
     member do
       get :edit_client
       patch :update_client
