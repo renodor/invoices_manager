@@ -3,28 +3,16 @@
 
   <div class="invoice">
     <div class="invoice__header">
-      <div>
-        <p class="invoice__title"><%= @invoice.user.full_name %></p>
-        <p class="invoice__upcase"><%= @invoice.user.address1 %></p>
-        <p class="invoice__upcase"><%= @invoice.user.zipcode %> <%= @invoice.user.city %></p>
-        <p><%= @invoice.user.country %></p>
-        <div class="invoice__spaced">
-          <p><%= @invoice.user.email %></p>
-          <p><%= @invoice.user.website %></p>
-        </div>
-        <p class="invoice__title">SIREN: <%= @invoice.user.siren %></p>
+      <div class="invoice__user">
+        <%= render 'user', invoice: @invoice %>
       </div>
       <div class="invoice__client">
-        <%= turbo_frame_tag dom_id(@invoice, :client) do %>
-          <%= render 'invoices/client', invoice: @invoice, client: @client %>
-        <% end %>
+        <%= render 'invoices/client', invoice: @invoice, client: @client %>
       </div>
     </div>
 
     <div class="invoice__infos">
-      <%= turbo_frame_tag dom_id(@invoice, :infos) do %>
-        <%= render 'invoices/infos', invoice: @invoice %>
-      <% end %>
+      <%= render 'invoices/infos', invoice: @invoice %>
     </div>
 
     <div class="invoice__body">
@@ -51,11 +39,6 @@
       <p class="invoice__no-tva">TVA non applicable, article 293 B du Code Général des Impôts</p>
     </div>
 
-    <div class="invoice__payment">
-      <div class="invoice__payment__line bold">Informations de paiement</div>
-      <div class="invoice__payment__line"><span>BIC :</span><%= @invoice.user.bic %></div>
-      <div class="invoice__payment__line"><span>IBAN :</span><%= @invoice.user.iban %></div>
-      <div class="invoice__payment__line"><span>Libellé :</span><span class="bold"><%= @invoice.number %></span></div>
-    </div>
+    <%= render 'payment', invoice: @invoice %>
   </div>
 </main>

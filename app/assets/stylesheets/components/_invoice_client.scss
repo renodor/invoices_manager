@@ -1,5 +1,6 @@
 .invoice-client {
   position: relative;
+  margin-top: var(--space-m);
   padding: var(--space-s) var(--space-m);
   transition: box-shadow 300ms;
   &:hover {
@@ -20,8 +21,10 @@
   &--form {
     align-items: center;
     margin-bottom: var(--space-s);
+    column-gap: var(--space-s);
     select {
       padding: var(--space-xxs);
+      text-align: right;
     }
   }
 }

@@ -2,14 +2,11 @@ fr:
   simple_form:
     placeholders:
       invoice:
-        name: Nom de la facture
+        title: Titre général de la facture
       line_item:
         description: Description
         quantity: 1
         unit_price: 100,00 €
-    labels:
-      invoice:
-        name: Nom
   helpers:
     submit:
       invoice:

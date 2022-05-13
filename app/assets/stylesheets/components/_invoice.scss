@@ -9,14 +9,18 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: var(--space-xxl);
   }
 
+  &__user {
+    flex-basis: 50%;
+    flex-shrink: 0;
+  }
+
   &__client {
+    flex-basis: 50%;
+    flex-shrink: 0;
     text-align: right;
-    flex-grow: 0;
-    max-width: 50%;
   }
 
   &__title {
@@ -75,5 +79,9 @@
         min-width: 60px;
       }
     }
+  }
+
+  &--form {
+    flex-direction: column;
   }
 }

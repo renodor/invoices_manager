@@ -6,7 +6,7 @@
   </div>
 
   <%= turbo_frame_tag nested_dom_id(@invoice, LineItem.new) do %>
-    <%= render "form",
+    <%= render 'form',
               invoice: @invoice,
               line_item: @line_item %>
   <% end %>

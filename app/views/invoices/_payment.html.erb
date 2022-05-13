@@ -1,0 +1,6 @@
+<div class="invoice__payment">
+  <div class="invoice__payment__line bold">Informations de paiement</div>
+  <div class="invoice__payment__line"><span>BIC :</span><%= @invoice.user.bic %></div>
+  <div class="invoice__payment__line"><span>IBAN :</span><%= @invoice.user.iban %></div>
+  <div class="invoice__payment__line"><span>Libellé :</span><span class="bold"><%= @invoice.number %></span></div>
+</div>

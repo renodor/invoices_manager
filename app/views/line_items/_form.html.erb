@@ -1,17 +1,24 @@
 <div class="line-item line-item--form">
+  <% form_id = nil %>
   <%= simple_form_for [invoice, line_item],
-                      html: { class: "form" } do |f| %>
-
-    <%#= form_error_notification(line_item) %>
+                      html: { class: 'form' } do |f| %>
 
     <%= f.input :description,
-                wrapper_html: { class: "line-item__description" },
+                wrapper_html: { class: 'line-item__description' },
                 input_html: { autofocus: true } %>
     <%= f.input :quantity,
-                wrapper_html: { class: "line-item__quantity" } %>
+                wrapper_html: { class: 'line-item__quantity' } %>
     <%= f.input :unit_price,
-                wrapper_html: { class: "line-item__price" } %>
+                wrapper_html: { class: 'line-item__price' } %>
+
+    <% form_id = f.id %>
   <% end %>
+  <!--
+    The destroy button won't work with button_tag + delete method with turbo links, so it has to be a button_to, which generate a form.
+    So the destroy button has to be outside the form (to avoid nested form)
+    But all buttons should be in the same div for HTML and CSS structure coherance.
+    So to avoid crossed divs we put the form submit button outside the form as well, and refer the form thanks to the form attribute
+  -->
   <div class="line-item__actions">
     <% unless %w[new create].include?(params[:action]) %>
       <%= button_to svg('trash'),
@@ -20,7 +27,7 @@
                     class: 'btn btn--light btn--icon' %>
     <% end %>
     <%= link_to svg('return'), invoice_path(invoice), class: 'btn btn--light btn--icon' %>
-    <%= button_tag class: 'btn btn--secondary btn--icon', form: dom_id(line_item, %w[edit update].include?(params[:action])  ? :edit : nil) do %>
+    <%= button_tag class: 'btn btn--secondary btn--icon', form: form_id do %>
       <%= svg('check') %>
     <% end %>
   </div>

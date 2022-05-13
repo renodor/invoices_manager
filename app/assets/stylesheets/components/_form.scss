@@ -3,6 +3,10 @@
   flex-wrap: wrap;
   gap: var(--space-xxs);
 
+  select {
+    background-color: white;
+  }
+
   &__group {
     flex: 1;
   }

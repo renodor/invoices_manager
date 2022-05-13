@@ -1,0 +1,9 @@
+<p class="invoice__title"><%= invoice.user.full_name %></p>
+<p class="invoice__upcase"><%= invoice.user.address1 %></p>
+<p class="invoice__upcase"><%= invoice.user.zipcode %> <%= invoice.user.city %></p>
+<p><%= invoice.user.country %></p>
+<div class="invoice__spaced">
+  <p><%= invoice.user.email %></p>
+  <p><%= invoice.user.website %></p>
+</div>
+<p class="invoice__title">SIREN: <%= invoice.user.siren %></p>

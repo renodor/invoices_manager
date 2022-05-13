@@ -12,18 +12,17 @@ class InvoicesController < ApplicationController
   end
 
   def new
-    @invoice = current_user.invoice.build
+    @clients = current_user.clients
+    @invoice = current_user.invoices.build
   end
 
   def create
-    @invoice = current_user.invoice.build(invoice_params)
+    @invoice = current_user.invoices.build(invoice_params)
 
     if @invoice.save
-      respond_to do |format|
-        format.html { redirect_to invoices_path, notice: 'Invoice was successfully created.' }
-        format.turbo_stream { flash.now[:notice] = 'Invoice was successfully created.' }
-      end
+      redirect_to invoice_path(@invoice), notice: 'Invoice was successfully created.'
     else
+      @clients = current_user.clients
       render :new, status: :unprocessable_entity
     end
   end
@@ -39,11 +38,11 @@ class InvoicesController < ApplicationController
     if @invoice.update(invoice_params)
       @client = @invoice.client
       respond_to do |format|
-        format.html { redirect_to invoices_path, notice: 'Invoice client was successfully updated.' }
-        format.turbo_stream { flash.now[:notice] = 'Invoice client was successfully updated.' }
+        format.html { redirect_to invoices_path, notice: 'Invoice was successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = 'Invoice was successfully updated.' }
       end
     else
-      render :edit, status: :unprocessable_entity
+      render :edit_client, status: :unprocessable_entity
     end
   end
 
@@ -52,22 +51,11 @@ class InvoicesController < ApplicationController
   def update_infos
     if @invoice.update(invoice_params)
       respond_to do |format|
-        format.html { redirect_to invoices_path, notice: 'Invoice infos were successfully updated.' }
-        format.turbo_stream { flash.now[:notice] = 'Invoice infos were successfully updated.' }
-      end
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def update
-    if @invoice.update(invoice_params)
-      respond_to do |format|
         format.html { redirect_to invoices_path, notice: 'Invoice was successfully updated.' }
         format.turbo_stream { flash.now[:notice] = 'Invoice was successfully updated.' }
       end
     else
-      render :edit, status: :unprocessable_entity
+      render :edit_infos, status: :unprocessable_entity
     end
   end
 

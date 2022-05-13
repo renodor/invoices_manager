@@ -32,7 +32,6 @@ end
 
 5.times do |n|
   invoice = Invoice.create!(
-    name: "Cool Invoice #{n + 1}",
     number: "#{Time.current.year}#{n + 1}",
     date: DateTime.current,
     title: 'Services de développement web',

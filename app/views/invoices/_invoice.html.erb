@@ -1,14 +1,5 @@
 <%= turbo_frame_tag invoice do %>
-  <div class="invoice_card">
+  <div class="invoice-card">
     <%= link_to invoice.name, invoice_path(invoice), data: { turbo_frame: "_top" } %>
-    <div class="invoice_card__actions">
-      <%= button_to "Delete",
-                    invoice_path(invoice),
-                    method: :delete,
-                    class: "btn btn--light" %>
-      <%= link_to "Edit",
-                  edit_invoice_path(invoice),
-                  class: "btn btn--light" %>
-    </div>
   </div>
 <% end %>

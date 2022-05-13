@@ -1,6 +1,8 @@
-<div class="invoice-client">
-  <%= render client %>
-  <%= link_to '',
-      [:edit_client, invoice],
-      class: 'full-absolute' %>
-</div>
+<%= turbo_frame_tag dom_id(invoice, :client) do %>
+  <div class="invoice-client">
+    <%= render client %>
+    <%= link_to '',
+        [:edit_client, invoice],
+        class: 'full-absolute' %>
+  </div>
+<% end %>
