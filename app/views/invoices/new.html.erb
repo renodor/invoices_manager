@@ -4,7 +4,9 @@
   <div class="invoice">
     <%= simple_form_for @invoice, html: { class: 'form invoice--form' } do |f| %>
       <div class="invoice__header">
-        <%= render 'user', invoice: @invoice %>
+        <div class="invoice__user">
+          <%= render 'user', invoice: @invoice %>
+        </div>
         <div class="invoice__client">
           <%= f.input :client_id, collection: @clients, prompt: 'Choose client', input_html: { autofocus: true } %>
         </div>
@@ -15,7 +17,7 @@
         <%= f.input :title %>
       </div>
 
-      <%= button_tag class: 'btn btn--secondary btn--icon' do %>
+      <%= button_tag class: 'btn btn--primary btn--icon' do %>
         Create Invoice and start adding items
       <% end %>
     <% end %>
