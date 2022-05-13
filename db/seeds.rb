@@ -5,6 +5,7 @@ Invoice.destroy_all
 LineItem.destroy_all
 
 user = User.create!(
+  username: 'Batman',
   email: 'batman@gmail.com',
   password: 'Azerty123',
   first_name: 'Bruce',

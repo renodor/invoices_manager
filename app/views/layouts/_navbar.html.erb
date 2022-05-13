@@ -4,7 +4,7 @@
       Invoices manager
     </div>
     <div class="navbar__name">
-      Hello renodor
+      Hello <%= current_user.username %>
     </div>
     <%= button_to "Sign out",
                   destroy_user_session_path,

@@ -6,7 +6,5 @@
                 class: 'btn btn--primary' %>
   </div>
 
-  <%= turbo_frame_tag 'invoices' do %>
-    <%= render @invoices %>
-  <% end %>
+  <%= render partial: 'invoice_card', collection: @invoices, as: :invoice %>
 </main>
