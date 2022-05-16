@@ -3,7 +3,7 @@
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-small);
   margin: var(--space-m) 0;
-  padding: var(--space-xxxxl);
+  padding: var(--space-xxxl);
 
   &__header {
     position: relative;
@@ -15,6 +15,7 @@
   &__user {
     flex-basis: 50%;
     flex-shrink: 0;
+    padding: var(--space-s) var(--space-m);
   }
 
   &__client {
@@ -40,6 +41,7 @@
   &__body {
     margin-top: var(--space-m);
     margin-bottom: var(--space-xxxxl);
+    padding: var(--space-s) var(--space-m);
   }
 
   &__line-items {
@@ -71,6 +73,7 @@
     display: flex;
     flex-direction: column;
     row-gap: var(--space-s);
+    padding: var(--space-s) var(--space-m);
 
     &__line {
       display: flex;

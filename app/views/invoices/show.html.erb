@@ -1,5 +1,8 @@
 <main class="container">
-  <%= link_to sanitize("&larr; Back to invoices"), invoices_path %>
+  <div class="invoice-nav <%= hide_on_pdf %>">
+    <%= link_to sanitize("&larr; Back to invoices"), invoices_path %>
+    <%= link_to 'Export to PDF', '/invoices/55/export_to_pdf.pdf', class: 'btn btn--primary' %>
+  </div>
 
   <div class="invoice">
     <div class="invoice__header">
@@ -31,7 +34,7 @@
                     [:new, @invoice, :line_item],
                     method: :get,
                     data: { turbo_frame: nested_dom_id(@invoice, LineItem.new) },
-                    class: 'btn btn--light btn--icon btn--spaced' %>
+                    class: "btn btn--light btn--icon btn--spaced #{hide_on_pdf}" %>
         <%= turbo_frame_tag dom_id(@invoice, :total) do %>
           <%= render 'total', invoice: @invoice %>
         <% end %>

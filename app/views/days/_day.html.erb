@@ -4,6 +4,6 @@
     <span class="day__week-day bold"><%= day.date.strftime("%^a") %></span>
     <span class="day__worked-hours"><%= day.worked ? '8' : '0' %></span>
     <span class="day__comment"><%= day.comment %></span>
-    <%= link_to '', [:edit, invoice, day], class: 'full-absolute' %>
+    <%= link_to '', [:edit, invoice, day], class: "full-absolute #{hide_on_pdf}" %>
   </div>
 <% end %>

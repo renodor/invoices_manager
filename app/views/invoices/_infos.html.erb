@@ -5,6 +5,6 @@
     <div class="invoice-infos__title"><%= invoice.title %></div>
     <%= link_to '',
       [:edit_infos, invoice],
-      class: 'full-absolute' %>
+      class: "full-absolute #{hide_on_pdf}" %>
   </div>
 <% end %>

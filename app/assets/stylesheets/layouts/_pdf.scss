@@ -1,0 +1,10 @@
+.pdf-layout {
+  background-color: var(--color-white);
+  .invoice, .days {
+    box-shadow: none;
+  }
+
+  @media print {
+    .invoice, .days {page-break-inside: avoid;}
+  }
+}

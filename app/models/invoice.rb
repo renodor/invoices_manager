@@ -18,8 +18,8 @@ class Invoice < ApplicationRecord
     date.strftime('%d/%m/%Y')
   end
 
-  def name
-    "#{number} - #{client.name} - #{title} - #{pretty_date}"
+  def pdf_file_name
+    "#{number}-#{client.name.downcase.gsub(' ', '_')}-#{title.downcase.gsub(' ', '_')}-#{date}.pdf"
   end
 
   def total_price

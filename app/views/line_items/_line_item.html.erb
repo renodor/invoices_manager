@@ -6,6 +6,6 @@
     <span class="line-item__total"><%= number_to_currency(line_item.total_price) %></span>
     <%= link_to '',
                 [:edit, invoice, line_item],
-                class: "line-item__edit" %>
+                class: "line-item__edit #{hide_on_pdf}" %>
   </div>
 <% end %>

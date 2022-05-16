@@ -1,7 +1,7 @@
 # frozen_string_literal:true
 
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: %i[show edit edit_client edit_infos update update_client update_infos destroy]
+  before_action :set_invoice, only: %i[show edit edit_client edit_infos update update_client update_infos destroy export_to_pdf]
 
   def index
     @invoices = current_user.invoices.ordered
@@ -66,6 +66,23 @@ class InvoicesController < ApplicationController
       format.html { redirect_to invoices_path, notice: 'Invoice was successfully destroyed.' }
       format.turbo_stream { flash.now[:notice] = 'Invoice was successfully destroyed.' }
     end
+  end
+
+  def export_to_pdf
+    html = render_to_string(action: :show, layout: 'pdf', formats: [:html], locals: { :@invoice => @invoice, :@client => @invoice.client })
+    r = Grover::HTMLPreprocessor.process(html, 'http://localhost:3000/', 'http')
+
+    respond_to do |format|
+      format.html { render html: html }
+      format.pdf do
+        render_pdf(r, filename: @invoice.pdf_file_name)
+      end
+    end
+  end
+
+  def render_pdf(html, filename:)
+    pdf = Grover.new(html, format: 'A4').to_pdf
+    send_data pdf, filename: filename, type: 'application/pdf'
   end
 
   private
