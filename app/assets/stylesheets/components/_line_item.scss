@@ -6,6 +6,7 @@
   text-align: right;
   position: relative;
   transition: box-shadow 300ms;
+  border-bottom: solid 1px var(--color-light);
   &:hover {
     box-shadow: var(--shadow-small);
   }

@@ -36,6 +36,13 @@ class DaysController < ApplicationController
     redirect_to invoice_path(@invoice)
   end
 
+  def remove_month
+    @invoice = current_user.invoices.find(params[:invoice_id])
+    @invoice.days.destroy_all
+
+    redirect_to invoice_path(@invoice)
+  end
+
   private
 
   def day_params

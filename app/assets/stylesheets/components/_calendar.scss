@@ -1,0 +1,18 @@
+.calendar {
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: var(--space-l);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-small);
+    margin: var(--space-m) 0;
+    padding: var(--space-xxxl) var(--space-xxxxl);
+    width: 100%;
+  }
+}

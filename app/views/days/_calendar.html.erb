@@ -1,0 +1,21 @@
+  <div class="calendar">
+    <% if invoice.days.present? %>
+      <div class="calendar__body">
+        <p class="invoice__title">Working Day Detail</p>
+        <div class="day day--header">
+          <span class="day__date">Date</span>
+          <span class="day__week-day">Day of Week</span>
+          <span class="day__worked-hours">Working Hours</span>
+          <span class="day__comment">Comment</span>
+        </div>
+        <%= render invoice.days.ordered, invoice: invoice %>
+      </div>
+      <div class="calendar__action">
+        <%= link_to 'Remove all days', remove_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
+      </div>
+    <% else %>
+      <div class="calendar__action">
+        <%= link_to 'Generate Days', generate_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
+      </div>
+    <% end %>
+  </div>

@@ -1,10 +1,14 @@
 .pdf-layout {
   background-color: var(--color-white);
-  .invoice, .days {
+  .invoice, .calendar__body {
     box-shadow: none;
   }
 
+  .invoice__total {
+    margin-top: var(--space-m)
+  }
+
   @media print {
-    .invoice, .days {page-break-inside: avoid;}
+    .invoice, .calendar {page-break-inside: avoid;}
   }
 }

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :days do
       collection do
         get :generate_month
+        get :remove_month
       end
     end
     member do

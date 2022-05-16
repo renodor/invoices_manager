@@ -1,7 +1,7 @@
 <main class="container">
   <div class="invoice-nav <%= hide_on_pdf %>">
     <%= link_to sanitize("&larr; Back to invoices"), invoices_path %>
-    <%= link_to 'Export to PDF', '/invoices/55/export_to_pdf.pdf', class: 'btn btn--primary' %>
+    <%= link_to 'Export to PDF', export_to_pdf_invoice_path(@invoice, format: :pdf), class: 'btn btn--primary' %>
   </div>
 
   <div class="invoice">
@@ -45,17 +45,5 @@
     <%= render 'payment', invoice: @invoice %>
   </div>
 
-  <% if @invoice.days.present? %>
-    <div class="days">
-      <div class="day day--header">
-        <span class="day__date">Date</span>
-        <span class="day__week-day">Day of Week</span>
-        <span class="day__worked-hours">Working Hours</span>
-        <span class="day__comment">Comment</span>
-      </div>
-      <%= render @invoice.days.ordered, invoice: @invoice %>
-    </div>
-  <% else %>
-    <%= link_to 'Generate Days', generate_month_invoice_days_path(@invoice) %>
-  <% end %>
+  <%= render 'days/calendar', invoice: @invoice %>
 </main>

@@ -54,6 +54,7 @@
     text-align: right;
     font-size: var(--font-size-s);
     font-style: italic;
+    color: var(--color-text-muted);
   }
 
   &__total {
@@ -72,15 +73,25 @@
   &__payment {
     display: flex;
     flex-direction: column;
-    row-gap: var(--space-s);
+    row-gap: var(--space-xs);
     padding: var(--space-s) var(--space-m);
 
     &__line {
       display: flex;
+      align-items: center;
       column-gap: var(--space-s);
-      span {
+      span:first-child {
         min-width: 60px;
       }
+      span:last-child {
+        min-width: 60px;
+        font-family: monospace;
+      }
+    }
+
+    &__disclaimer {
+      color: var(--color-text-muted);
+      font-size: var(--font-size-s);
     }
   }
 
