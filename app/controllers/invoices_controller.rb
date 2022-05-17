@@ -29,6 +29,14 @@ class InvoicesController < ApplicationController
 
   def edit; end
 
+  def update
+    if @invoice.update(invoice_params)
+      redirect_to invoice_path(@invoice), notice: 'Invoice was successfully updated.'
+    else
+      render :show, status: :unprocessable_entity
+    end
+  end
+
   def edit_client
     @clients = current_user.clients
     @client = @invoice.client
@@ -62,10 +70,7 @@ class InvoicesController < ApplicationController
   def destroy
     @invoice.destroy
 
-    respond_to do |format|
-      format.html { redirect_to invoices_path, notice: 'Invoice was successfully destroyed.' }
-      format.turbo_stream { flash.now[:notice] = 'Invoice was successfully destroyed.' }
-    end
+    redirect_to invoices_path, notice: 'Invoice was successfully destroyed.'
   end
 
   def export_to_pdf
@@ -92,6 +97,6 @@ class InvoicesController < ApplicationController
   end
 
   def invoice_params
-    params.require(:invoice).permit(:name, :date, :title, :number, :client_id)
+    params.require(:invoice).permit(:name, :date, :title, :number, :client_id, :locked)
   end
 end

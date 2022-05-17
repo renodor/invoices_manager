@@ -1,8 +1,10 @@
 <%= turbo_frame_tag dom_id(invoice, :client) do %>
-  <div class="invoice-client">
+  <div class="invoice-client <%= class_names(locked: invoice.locked?) %>">
     <%= render client %>
-    <%= link_to '',
-        [:edit_client, invoice],
-        class: "full-absolute #{hide_on_pdf}" %>
+    <% unless invoice.locked %>
+      <%= link_to '',
+          [:edit_client, invoice],
+          class: "full-absolute #{hide_on_pdf}" %>
+    <% end %>
   </div>
 <% end %>

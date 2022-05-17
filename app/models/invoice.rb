@@ -8,6 +8,7 @@ class Invoice < ApplicationRecord
 
   validates :date, :number, presence: true
   validates :number, uniqueness: true
+  validates :locked, inclusion: { in: [true, false] }
 
   scope :ordered, -> { order(id: :desc) }
   scope :current_year, -> { where('date > ?', DateTime.new(Time.current.year, 1, 1)) }

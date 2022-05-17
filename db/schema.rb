@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_13_155852) do
+ActiveRecord::Schema.define(version: 2022_05_17_154019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_05_13_155852) do
     t.date "date", null: false
     t.string "title"
     t.bigint "user_id", null: false
+    t.boolean "locked", default: false
     t.index ["client_id"], name: "index_invoices_on_client_id"
     t.index ["user_id"], name: "index_invoices_on_user_id"
   end

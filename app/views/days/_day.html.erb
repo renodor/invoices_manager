@@ -1,9 +1,11 @@
 <%= turbo_frame_tag day do %>
-  <div class="day <%= day.worked ? '' : 'day--not-worked' %>">
+  <div class="day <%= class_names(locked: invoice.locked?, 'day--not-worked' => !day.worked?) %>">
     <span class="day__date"><%= day.date %></span>
     <span class="day__week-day bold"><%= day.date.strftime("%^a") %></span>
     <span class="day__worked-hours"><%= day.worked ? '8' : '0' %></span>
     <span class="day__comment"><%= day.comment %></span>
-    <%= link_to '', [:edit, invoice, day], class: "full-absolute #{hide_on_pdf}" %>
+    <% unless invoice.locked %>
+      <%= link_to '', [:edit, invoice, day], class: "full-absolute #{hide_on_pdf}" %>
+    <% end %>
   </div>
 <% end %>

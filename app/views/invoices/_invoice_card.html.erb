@@ -5,5 +5,8 @@
   </div>
   <span class="invoice-card__title"><%= invoice.title %></span>
   <span><%= invoice.pretty_date %></span>
+  <% if invoice.locked %>
+    <span><%= svg('lock') %></span>
+  <% end %>
   <%= link_to '', invoice_path(invoice), class: 'full-absolute' %>
 </div>

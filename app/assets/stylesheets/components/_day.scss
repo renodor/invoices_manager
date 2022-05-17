@@ -6,7 +6,7 @@
   padding: var(--space-xs) var(--space-m);
   transition: box-shadow 300ms;
   border-bottom: solid 1px var(--color-light);
-  &:hover {
+  &:not(.locked):hover {
     box-shadow: var(--shadow-small);
   }
 

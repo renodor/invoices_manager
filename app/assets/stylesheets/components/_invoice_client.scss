@@ -3,7 +3,7 @@
   margin-top: var(--space-m);
   padding: var(--space-s) var(--space-m);
   transition: box-shadow 300ms;
-  &:hover {
+  &:not(.locked):hover {
     box-shadow: var(--shadow-small);
   }
 

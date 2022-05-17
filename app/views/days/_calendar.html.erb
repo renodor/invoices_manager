@@ -2,7 +2,7 @@
     <% if invoice.days.present? %>
       <div class="calendar__body">
         <p class="invoice__title">Working Day Detail</p>
-        <div class="day day--header">
+        <div class="day day--header locked">
           <span class="day__date">Date</span>
           <span class="day__week-day">Day of Week</span>
           <span class="day__worked-hours">Working Hours</span>
@@ -10,12 +10,16 @@
         </div>
         <%= render invoice.days.ordered, invoice: invoice %>
       </div>
-      <div class="calendar__action">
-        <%= link_to 'Remove all days', remove_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
-      </div>
+      <% unless invoice.locked %>
+        <div class="calendar__action">
+          <%= link_to 'Remove all days', remove_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
+        </div>
+      <% end %>
     <% else %>
-      <div class="calendar__action">
-        <%= link_to 'Generate Days', generate_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
-      </div>
+      <% unless invoice.locked %>
+        <div class="calendar__action">
+          <%= link_to 'Generate Days', generate_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
