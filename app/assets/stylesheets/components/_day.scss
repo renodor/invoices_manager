@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  padding: var(--space-xs) var(--space-m);
+  padding: var(--space-xxs) var(--space-m);
   transition: box-shadow 300ms;
   border-bottom: solid 1px var(--color-light);
   &:not(.locked):hover {
@@ -20,7 +20,7 @@
     align-items: center;
   }
 
-  &__worked-hours {
+  &__worked-hours, &__count {
     flex: 0 0 130px;
     text-align: center;
   }
@@ -32,6 +32,10 @@
   &__actions {
     display: flex;
     column-gap: var(--space-s);
+  }
+
+  &__total {
+    flex: 0 0 260px;
   }
 
   &--header {

@@ -8,4 +8,8 @@ class Day < ApplicationRecord
   validates :date, uniqueness: { scope: :invoice_id }
 
   scope :ordered, -> { order(date: :asc) }
+
+  def pretty_date
+    date.strftime('%d/%m/%Y')
+  end
 end

@@ -9,6 +9,10 @@
           <span class="day__comment">Comment</span>
         </div>
         <%= render invoice.days.ordered, invoice: invoice %>
+        <div class="day day--header locked">
+          <span class="day__total">Total</span>
+          <span class="day__count"><%= invoice.days.where(worked: true).count * 8 %></span>
+        </div>
       </div>
       <% unless invoice.locked %>
         <div class="calendar__action">
