@@ -1,7 +1,7 @@
 <main class="container">
   <div class="header">
-    <h1>Invoices</h1>
-    <%= link_to 'New invoice',
+    <h1><%= t('invoice', count: @invoices.size) %></h1>
+    <%= link_to t('new_invoice'),
                 new_invoice_path,
                 class: 'btn btn--primary' %>
   </div>

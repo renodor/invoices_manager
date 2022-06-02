@@ -4,10 +4,6 @@
     box-shadow: none;
   }
 
-  .invoice__total {
-    margin-top: var(--space-m)
-  }
-
   @media print {
     .invoice, .calendar {
       page-break-inside: avoid;

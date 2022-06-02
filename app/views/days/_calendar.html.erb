@@ -1,12 +1,12 @@
   <div class="calendar">
     <% if invoice.days.present? %>
       <div class="calendar__body">
-        <p class="invoice__title">Working Day Detail</p>
+        <p class="invoice__title"><%= t('calendar.working_days') %></p>
         <div class="day day--header locked">
-          <span class="day__date">Date</span>
-          <span class="day__week-day">Day of Week</span>
-          <span class="day__worked-hours">Working Hours</span>
-          <span class="day__comment">Comment</span>
+          <span class="day__date"><%= t('calendar.date') %></span>
+          <span class="day__week-day"><%= t('calendar.day') %></span>
+          <span class="day__worked-hours"><%= t('calendar.working_hours') %></span>
+          <span class="day__comment"><%= t('calendar.comment') %></span>
         </div>
         <%= render invoice.days.ordered, invoice: invoice %>
         <div class="day day--header locked">
@@ -16,13 +16,13 @@
       </div>
       <% unless invoice.locked %>
         <div class="calendar__action">
-          <%= link_to 'Remove all days', remove_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
+          <%= link_to t('calendar.remove_calendar'), remove_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
         </div>
       <% end %>
     <% else %>
       <% unless invoice.locked %>
         <div class="calendar__action">
-          <%= link_to 'Generate Days', generate_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
+          <%= link_to t('calendar.add_calendar'), generate_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
         </div>
       <% end %>
     <% end %>

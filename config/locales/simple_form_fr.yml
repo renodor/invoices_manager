@@ -2,6 +2,7 @@ fr:
   simple_form:
     placeholders:
       invoice:
+        number: Numéro de la facture
         title: Titre général de la facture
       line_item:
         description: Description
@@ -9,9 +10,15 @@ fr:
         unit_price: 100,00 €
       day:
         comment: Commentaire
+      user:
+        email: Email
+        password: Mot de passe
     label:
       day:
         worked: Jour travaillé?
+    prompts:
+      invoice:
+        client_id: 'Choisir le client'
   helpers:
     submit:
       invoice:

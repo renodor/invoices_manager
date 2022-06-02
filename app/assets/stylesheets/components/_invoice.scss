@@ -38,10 +38,6 @@
     margin: var(--space-s) 0;
   }
 
-  &__hover-link {
-    
-  }
-
   &__body {
     margin-top: var(--space-m);
     margin-bottom: var(--space-xxxxl);
@@ -64,6 +60,7 @@
   &__total {
     display: flex;
     justify-content: flex-end;
+    margin-top: var(--space-m);
     &__content {
       width: 30%;
       display: flex;

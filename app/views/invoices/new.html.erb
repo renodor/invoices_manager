@@ -1,5 +1,5 @@
 <main class="container">
-  <%= link_to sanitize("&larr; Back to invoices"), invoices_path %>
+  <%= link_to sanitize("&larr; #{t('back_to_invoices')}"), invoices_path %>
 
   <div class="invoice">
     <%= simple_form_for @invoice, html: { class: 'form invoice--form' } do |f| %>
@@ -8,7 +8,7 @@
           <%= render 'user', invoice: @invoice %>
         </div>
         <div class="invoice__client">
-          <%= f.input :client_id, collection: @clients, prompt: 'Choose client', input_html: { autofocus: true } %>
+          <%= f.input :client_id, collection: @clients, prompt: :translate, input_html: { autofocus: true } %>
         </div>
       </div>
       <div class="invoice__infos form invoice-infos--form">
@@ -18,7 +18,7 @@
       </div>
 
       <%= button_tag class: 'btn btn--primary btn--icon' do %>
-        Create Invoice and start adding items
+        <%= t('create_invoice_and_add_items') %>
       <% end %>
     <% end %>
 

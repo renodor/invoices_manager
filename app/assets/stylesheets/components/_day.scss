@@ -21,12 +21,13 @@
   }
 
   &__worked-hours, &__count {
-    flex: 0 0 130px;
+    flex: 0 0 150px;
     text-align: center;
   }
 
   &__comment {
     flex-grow: 1;
+    text-align: right;
   }
 
   &__actions {

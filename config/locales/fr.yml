@@ -1,4 +1,30 @@
 fr:
+  hello: Salut
+  invoice:
+    one: Facture
+    other: Factures
+  new_invoice: Nouvelle facture
+  back_to_invoices: Retour aux factures
+  create_invoice_and_add_items: Créer la facture et ajouter des elements
+  locked_invoice: Facture bloquée non editable
+  description: Description
+  qty: Qté
+  unit_price: Prix unitaire
+  ht_total: Total HT
+  total: Total
+  no_tva_explaination: TVA non applicable, article 293 B du Code Général des Impôts
+  payment_informations: Informations de paiement
+  payment_label: Libellé
+  payment_label_explaination: À utiliser comme libellé lors de votre virement pour identifier la transaction
+  calendar:
+    add_calendar: Ajouter un calendrier
+    working_days: Jours travaillés
+    date: Date
+    day: Jour
+    remove_calendar: Enlever le calendrier
+    working_hours: Heures travaillées
+    comment: Commentaire
+  are_you_sure: Atttennntion, sûr de toi?
   number:
     currency:
       format:
@@ -9,3 +35,14 @@ fr:
         significant: false
         strip_insignificant_zeros: false
         unit: "€"
+  date:
+    abbr_day_names:
+      - dim
+      - lun
+      - mar
+      - mer
+      - jeu
+      - ven
+      - sam
+    formats:
+      only_day: "%^a"

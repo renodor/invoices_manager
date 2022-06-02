@@ -29,4 +29,8 @@
       border-color: var(--color-primary);
     }
   }
+
+  &--login {
+    flex-direction: column;
+  }
 }

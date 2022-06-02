@@ -1,21 +1,21 @@
 <main class="container">
   <div class="invoice-nav <%= hide_on_pdf %>">
-    <%= link_to sanitize("&larr; Back to invoices"), invoices_path %>
+    <%= link_to sanitize("&larr; #{t('back_to_invoices')}"), invoices_path %>
     <% if @invoice.locked %>
-      <h4>This invoice has been send to client. It's now locked and can't be edited</h4>
+      <h4><%= t('locked_invoice') %></h4>
     <% end %>
     <div class="invoice-nav__right">
       <% unless @invoice.locked %>
         <%= button_to svg('trash'),
                       @invoice,
                       method: :delete,
-                      form: { data: { turbo_confirm: 'Are you sure?' } },
+                      form: { data: { turbo_confirm: t('are_you_sure') } },
                       class: 'btn btn--light btn--icon' %>
       <% end %>
       <%= button_to @invoice.locked ? svg('unlock') : svg('lock'),
                     @invoice,
                     class: 'btn btn--light btn--icon',
-                    form: { data: { turbo_confirm: 'Are you sure?' } },
+                    form: { data: { turbo_confirm: t('are_you_sure') } },
                     params: { invoice: { locked: !@invoice.locked } } %>
       <%= link_to 'PDF', export_to_pdf_invoice_path(@invoice, format: :pdf), class: 'btn btn--primary' %>
     </div>
@@ -37,10 +37,10 @@
     <div class="invoice__body">
       <div class="invoice__line-items">
         <div class="line-item line-item--header locked">
-          <span class="line-item__description">Description</span>
-          <span class="line-item__quantity">Qté</span>
-          <span class="line-item__price">Prix unitaire</span>
-          <span class="line-item__total">Total HT</span>
+          <span class="line-item__description"><%= t('description') %></span>
+          <span class="line-item__quantity"><%= t('qty') %></span>
+          <span class="line-item__price"><%= t('unit_price') %></span>
+          <span class="line-item__total"><%= t('ht_total') %></span>
         </div>
         <%= turbo_frame_tag nested_dom_id(@invoice, 'line_items') do %>
           <%= render @invoice.line_items.ordered, invoice: @invoice %>
@@ -57,7 +57,7 @@
           <%= render 'total', invoice: @invoice %>
         <% end %>
       </div>
-      <p class="invoice__no-tva">TVA non applicable, article 293 B du Code Général des Impôts</p>
+      <p class="invoice__no-tva"><%= t('no_tva_explaination') %></p>
     </div>
 
     <%= render 'payment', invoice: @invoice %>

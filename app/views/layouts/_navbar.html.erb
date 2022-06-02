@@ -1,17 +1,14 @@
 <header class="navbar">
   <% if user_signed_in? %>
-    <div class="navbar__brand">
-      Invoices manager
-    </div>
     <div class="navbar__name">
-      Hello <%= current_user.username %>
+       <%= "#{t('hello')} #{current_user.username}" %>
     </div>
-    <%= button_to "Sign out",
+    <%= button_to t('devise.sessions.already_signed_out'),
                   destroy_user_session_path,
                   method: :delete,
                   class: "btn btn--dark" %>
   <% else %>
-    <%= link_to "Sign in",
+    <%= link_to t('devise.sessions.new.sign_in'),
                 new_user_session_path,
                 class: "btn btn--dark navbar__right" %>
   <% end %>
