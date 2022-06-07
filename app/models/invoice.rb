@@ -30,7 +30,7 @@ class Invoice < ApplicationRecord
   end
 
   def self.next_number
-    last_number = Invoice.current_year.last.number[4..].to_i
+    last_number = Invoice.current_year.last&.number&.slice(4..).to_i
     "#{Time.current.year}#{last_number + 1}"
   end
 
