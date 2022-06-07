@@ -1,3 +1,7 @@
 <%= turbo_stream.replace @day do %>
   <%= render @day, invoice: @invoice %>
 <% end %>
+
+<%= turbo_stream.update dom_id(@invoice, :calendar_total) do %>
+  <%= render 'calendar_total', invoice: @invoice %>
+<% end %>
