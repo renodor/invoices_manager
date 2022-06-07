@@ -12,7 +12,7 @@ class InvoicesController < ApplicationController
   end
 
   def new
-    @clients = current_user.clients
+    @clients = current_user.clients.not_deleted
     @invoice = current_user.invoices.build
   end
 
@@ -22,7 +22,7 @@ class InvoicesController < ApplicationController
     if @invoice.save
       redirect_to invoice_path(@invoice), notice: 'Invoice was successfully created.'
     else
-      @clients = current_user.clients
+      @clients = current_user.clients.not_deleted
       render :new, status: :unprocessable_entity
     end
   end
@@ -38,7 +38,7 @@ class InvoicesController < ApplicationController
   end
 
   def edit_client
-    @clients = current_user.clients
+    @clients = current_user.clients.not_deleted
     @client = @invoice.client
   end
 

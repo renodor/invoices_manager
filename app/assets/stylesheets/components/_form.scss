@@ -28,6 +28,10 @@
     &--invalid {
       border-color: var(--color-primary);
     }
+    
+    &--width-auto {
+      width: auto;
+    }
   }
 
   &--login {

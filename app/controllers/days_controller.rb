@@ -27,20 +27,27 @@ class DaysController < ApplicationController
   def generate_month
     @invoice = current_user.invoices.find(params[:invoice_id])
     invoice_date = @invoice.date
-    (Date.new(invoice_date.year, invoice_date.month - 1, 1)..Date.new(invoice_date.year, invoice_date.month - 1, -1)).each do |day|
+    month = params[:date][:month].to_i
+    (Date.new(invoice_date.year, month, 1)..Date.new(invoice_date.year, month, -1)).each do |day|
       next if [0, 6].include?(day.wday)
 
       @invoice.days.create(date: day)
     end
 
-    redirect_to invoice_path(@invoice)
+    respond_to do |format|
+      format.html { redirect_to invoice_path(@invoice), notice: 'Calendar was successfully created.' }
+      format.turbo_stream { flash.now[:notice] = 'Calendar was successfully created.' }
+    end
   end
 
   def remove_month
     @invoice = current_user.invoices.find(params[:invoice_id])
     @invoice.days.destroy_all
 
-    redirect_to invoice_path(@invoice)
+    respond_to do |format|
+      format.html { redirect_to invoice_path(@invoice), notice: 'Calendar was successfully destroyed.' }
+      format.turbo_stream { flash.now[:notice] = 'Calendar was successfully destroyed.' }
+    end
   end
 
   private
