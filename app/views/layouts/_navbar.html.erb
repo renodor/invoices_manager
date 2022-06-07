@@ -6,6 +6,7 @@
     <%= button_to t('devise.sessions.already_signed_out'),
                   destroy_user_session_path,
                   method: :delete,
+                  data: { turbo: false },
                   class: "btn btn--dark" %>
   <% else %>
     <%= link_to t('devise.sessions.new.sign_in'),
