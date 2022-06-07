@@ -1,19 +1,16 @@
 # frozen_string_literal:true
 
 class DaysController < ApplicationController
+  before_action :set_invoice
+  before_action :set_day, only: %i[edit update]
+
   def new
-    @invoice = current_user.invoices.find(params[:invoice_id])
     @day = @invoice.days.build
   end
 
-  def edit
-    @invoice = current_user.invoices.find(params[:invoice_id])
-    @day = @invoice.days.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @invoice = current_user.invoices.find(params[:invoice_id])
-    @day = @invoice.days.find(params[:id])
     if @day.update(day_params)
       respond_to do |format|
         format.html { redirect_to invoice_path(@invoice), notice: 'Day was successfully updated.' }
@@ -25,7 +22,6 @@ class DaysController < ApplicationController
   end
 
   def generate_month
-    @invoice = current_user.invoices.find(params[:invoice_id])
     invoice_date = @invoice.date
     month = params[:date][:month].to_i
     (Date.new(invoice_date.year, month, 1)..Date.new(invoice_date.year, month, -1)).each do |day|
@@ -41,7 +37,6 @@ class DaysController < ApplicationController
   end
 
   def remove_month
-    @invoice = current_user.invoices.find(params[:invoice_id])
     @invoice.days.destroy_all
 
     respond_to do |format|
@@ -51,6 +46,14 @@ class DaysController < ApplicationController
   end
 
   private
+
+  def set_invoice
+    @invoice = current_user.invoices.find(params[:invoice_id])
+  end
+
+  def set_day
+    @day = @invoice.days.find(params[:id])
+  end
 
   def day_params
     params.require(:day).permit(:worked, :comment)

@@ -1,7 +1,7 @@
 # frozen_string_literal:true
 
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: %i[show edit edit_client edit_infos update update_client update_infos destroy export_to_pdf]
+  before_action :set_invoice, except: %i[index new create]
 
   def index
     @invoices = current_user.invoices.not_deleted.ordered
@@ -85,11 +85,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def render_pdf(html, filename:)
-    pdf = Grover.new(html, format: 'A4').to_pdf
-    send_data pdf, filename: filename, type: 'application/pdf'
-  end
-
   private
 
   def set_invoice
@@ -98,5 +93,10 @@ class InvoicesController < ApplicationController
 
   def invoice_params
     params.require(:invoice).permit(:name, :date, :title, :number, :client_id, :locked)
+  end
+
+  def render_pdf(html, filename:)
+    pdf = Grover.new(html, format: 'A4').to_pdf
+    send_data pdf, filename: filename, type: 'application/pdf'
   end
 end
