@@ -28,7 +28,6 @@
     &--invalid {
       border-color: var(--color-primary);
     }
-    
     &--width-auto {
       width: auto;
     }
@@ -36,5 +35,6 @@
 
   &--login {
     flex-direction: column;
+    margin-top: var(--space-xl)
   }
 }
