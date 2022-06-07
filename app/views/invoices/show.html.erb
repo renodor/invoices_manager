@@ -11,12 +11,13 @@
                       method: :delete,
                       form: { data: { turbo_confirm: t('are_you_sure') } },
                       class: 'btn btn--light btn--icon' %>
+
+        <%= button_to svg('lock'),
+                      @invoice,
+                      class: 'btn btn--light btn--icon',
+                      form: { data: { turbo_confirm: t('are_you_sure') } },
+                      params: { invoice: { locked: !@invoice.locked } } %>
       <% end %>
-      <%= button_to @invoice.locked ? svg('unlock') : svg('lock'),
-                    @invoice,
-                    class: 'btn btn--light btn--icon',
-                    form: { data: { turbo_confirm: t('are_you_sure') } },
-                    params: { invoice: { locked: !@invoice.locked } } %>
       <%= link_to 'PDF', export_to_pdf_invoice_path(@invoice, format: :pdf), class: 'btn btn--primary' %>
     </div>
   </div>

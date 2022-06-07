@@ -1,6 +1,8 @@
 # frozen_string_literal:true
 
 class Invoice < ApplicationRecord
+  include SoftDeletable
+
   belongs_to :user
   belongs_to :client
   has_many :line_items, dependent: :destroy

@@ -22,7 +22,10 @@
     <% else %>
       <% unless invoice.locked %>
         <div class="calendar__action">
-          <%= link_to t('calendar.add_calendar'), generate_month_invoice_days_path(invoice), class: "btn btn--light #{hide_on_pdf}" %>
+          <%= simple_form_for '', url: generate_month_invoice_days_path(@invoice), html: { class: 'form' } do |f| %>
+            <%= select_month(Date.current - 1.month) %>
+            <%= f.submit t('calendar.add_calendar'), class: "btn btn--light #{hide_on_pdf}" %>
+          <% end %>
         </div>
       <% end %>
     <% end %>

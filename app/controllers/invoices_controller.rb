@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show edit edit_client edit_infos update update_client update_infos destroy export_to_pdf]
 
   def index
-    @invoices = current_user.invoices.ordered
+    @invoices = current_user.invoices.not_deleted.ordered
   end
 
   def show
@@ -68,7 +68,7 @@ class InvoicesController < ApplicationController
   end
 
   def destroy
-    @invoice.destroy
+    @invoice.destroy(do_i_really_want_to_do_it: !@invoice.locked?)
 
     redirect_to invoices_path, notice: 'Invoice was successfully destroyed.'
   end
