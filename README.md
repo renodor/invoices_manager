@@ -1,24 +1,12 @@
-# README
+# Invoices Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a personal webapp to create invoices for my clients.
+I used this personal project to build my first webapp using Rails 7 and get familiar with Hotwire.
+(The codebase is freely inspired from the final result of [this tutorial](https://www.hotrails.dev/turbo-rails))
 
-Things you may want to cover:
+### Built With
+* [Ruby on Rails 7](https://rubyonrails.org/)
+* [Hotwire](https://hotwired.dev/)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Aditional plugins
+* [Grover](https://github.com/Studiosity/grover) (Export HTML to PDF)
