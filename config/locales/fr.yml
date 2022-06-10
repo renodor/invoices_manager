@@ -6,6 +6,7 @@ fr:
   new_invoice: Nouvelle facture
   back_to_invoices: Retour aux factures
   create_invoice_and_add_items: Créer la facture et ajouter des elements
+  total_invoiced_in_year: Total facturé en %{year}
   locked_invoice: Facture bloquée non editable
   description: Description
   qty: Qté
