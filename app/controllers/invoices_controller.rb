@@ -75,12 +75,12 @@ class InvoicesController < ApplicationController
 
   def export_to_pdf
     html = render_to_string(action: :show, layout: 'pdf', formats: [:html], locals: { :@invoice => @invoice, :@client => @invoice.client })
-    r = Grover::HTMLPreprocessor.process(html, 'http://localhost:3000/', 'http')
+    pdf = Grover::HTMLPreprocessor.process(html, Rails.application.config.asset_host, 'http')
 
     respond_to do |format|
       format.html { render html: html }
       format.pdf do
-        render_pdf(r, filename: @invoice.pdf_file_name)
+        render_pdf(pdf, filename: @invoice.pdf_file_name)
       end
     end
   end

@@ -4,7 +4,7 @@ Grover.configure do |config|
   config.options = {
     format: 'A4',
     print_background: true,
-    timezone: 'Australia/Sydney',
+    timezone: 'Europe/Paris',
     wait_for_function: 'document.fonts.ready'
   }
 end
