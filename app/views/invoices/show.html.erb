@@ -1,4 +1,4 @@
-<main class="container">
+<main class="invoice-container">
   <div class="invoice-nav <%= hide_on_pdf %>">
     <%= link_to sanitize("&larr; #{t('back_to_invoices')}"), invoices_path %>
     <% if @invoice.locked %>

@@ -17,21 +17,21 @@
   }
 
   &__quantity {
-    flex: 0 0 75px;
+    flex: 0 0 50px;
     input {
       text-align: right;
     }
   }
 
   &__price {
-    flex: 0 0 150px;
+    flex: 0 0 120px;
     input {
       text-align: right;
     }
   }
 
   &__total {
-    flex: 0 0 150px;
+    flex: 0 0 120px;
   }
 
   &__edit {

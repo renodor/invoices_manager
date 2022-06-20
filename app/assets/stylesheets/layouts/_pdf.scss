@@ -5,8 +5,8 @@
   }
 
   @media print {
-    .invoice, .calendar {
-      page-break-inside: avoid;
+    .invoice, .calendar, .invoice__payment {
+      break-inside: avoid-page;
     }
   }
 }
